@@ -2,6 +2,10 @@
 
 A Python agent that scrapes URLs of websites for a specific keyword and extracts emails and phone numbers using [Firecrawl](https://firecrawl.dev).
 
+**Available in two modes:**
+- 🌐 **Web UI** - User-friendly Streamlit interface (recommended)
+- 💻 **CLI** - Command-line interface for automation
+
 ## Features
 
 - 🔍 Search for up to 200 websites based on any keyword
@@ -10,7 +14,22 @@ A Python agent that scrapes URLs of websites for a specific keyword and extracts
 - 🌐 Support for Google Custom Search or DuckDuckGo (no API key needed)
 - 💾 Export results to JSON and CSV formats
 - 🚀 Rate-limited scraping to respect server resources
-- 📊 Progress tracking and detailed summaries
+- 📊 Real-time progress tracking and detailed summaries
+- 🎨 Beautiful web interface with Streamlit (NEW!)
+- 🔧 Flexible configuration - all options available in UI
+
+## Quick Start
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Start the web interface
+streamlit run app.py
+
+# 3. Enter your Firecrawl API key in the sidebar
+# 4. Enter a search keyword and click "Start Scraping"!
+```
 
 ## Installation
 
@@ -25,7 +44,9 @@ cd Leadfinder
 pip install -r requirements.txt
 ```
 
-3. **Set up environment variables:**
+3. **Set up environment variables (Optional for Web UI):**
+
+For the CLI, you'll need to set up environment variables. For the Web UI, you can enter API keys directly in the interface.
 
 Copy the example environment file:
 ```bash
@@ -42,6 +63,8 @@ GOOGLE_SEARCH_API_KEY=your_google_api_key_here
 GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
 ```
 
+**Note:** The web interface allows you to enter API keys directly in the UI, so the `.env` file is optional for web usage.
+
 ### Getting API Keys
 
 **Firecrawl API Key (Required):**
@@ -57,14 +80,46 @@ If you don't provide Google API credentials, the agent will automatically use Du
 
 ## Usage
 
-### Basic Usage
+### 🌐 Web Interface (Recommended)
+
+The easiest way to use Lead Finder is through the web interface:
+
+1. **Start the Streamlit app:**
+```bash
+streamlit run app.py
+```
+
+2. **Open your browser:**
+   - The app will automatically open at `http://localhost:8501`
+   - If not, navigate to the URL shown in the terminal
+
+3. **Use the interface:**
+   - Enter your API keys in the sidebar
+   - Configure search options (number of websites, search method)
+   - Enter your search keyword
+   - Click "Start Scraping"
+   - View results and download JSON/CSV files
+
+**Web Interface Features:**
+- ✅ No command-line knowledge required
+- ✅ Real-time progress tracking
+- ✅ Interactive results viewing with filtering
+- ✅ One-click download of results
+- ✅ Visual metrics and summaries
+- ✅ Built-in user guide
+
+### 💻 Command Line Interface
+
+For automation and scripting, use the CLI:
+
+#### Basic Usage
 
 Search for 200 websites about a keyword:
 ```bash
 python main.py "software development companies"
 ```
 
-### Advanced Usage
+#### Advanced CLI Usage
 
 **Specify number of websites:**
 ```bash
@@ -91,7 +146,7 @@ python main.py "restaurants" --no-csv
 python main.py "plumbers" --no-json
 ```
 
-### Command Line Options
+#### Command Line Options
 
 ```
 positional arguments:
